@@ -30,4 +30,5 @@ require("lazy").setup({
 	require("plugins.fugitive"),
 	require("plugins.neogit"),
 	require("plugins.treesitter-context"),
+	require("plugins.render-markdown"),
 })
