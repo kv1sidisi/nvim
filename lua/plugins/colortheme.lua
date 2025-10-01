@@ -1,14 +1,10 @@
-return { 
-  "catppuccin/nvim",
-  name = "catppuccin",
+return {
+  "ellisonleao/gruvbox.nvim",
   priority = 1000,
-  lazy = false,
   config = function()
-    require("catppuccin").setup({
-      flavour = "latte",
-      background = { light = "latte", dark = "mocha" },
-      default_integrations = true,
-    })
-    vim.cmd.colorscheme("catppuccin")  
+    -- For dark theme, the default is already dark.
+    -- You can also explicitly set it:
+    -- vim.g.gruvbox_palette = "dark"
+    vim.cmd.colorscheme("gruvbox")
   end,
 }
