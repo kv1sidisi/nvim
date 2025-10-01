@@ -52,6 +52,9 @@ vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', opts)
 vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', opts)
 vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', opts)
 
+vim.keymap.set('n', '<C-g>', ':terminal<CR>', opts) -- open terminal
+vim.keymap.set('t', '<leader>x', '<C-\\><C-n>:bdelete!<CR>', opts) -- close terminal buffer
+
 -- Tabs
 vim.keymap.set('n', '<leader>to', ':tabnew<CR>', opts) -- open new tab
 vim.keymap.set('n', '<leader>tx', ':tabclose<CR>', opts) -- close current tab

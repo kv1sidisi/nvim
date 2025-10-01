@@ -32,4 +32,6 @@ require("lazy").setup({
 	require("plugins.treesitter-context"),
 	require("plugins.render-markdown"),
 	require("plugins.luasnip"),
+	require("plugins.dap"),
+	require("plugins.symbols-outline"),
 })
