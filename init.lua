@@ -31,4 +31,5 @@ require("lazy").setup({
 	require("plugins.neogit"),
 	require("plugins.treesitter-context"),
 	require("plugins.render-markdown"),
+	require("plugins.luasnip"),
 })
