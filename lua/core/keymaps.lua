@@ -46,11 +46,10 @@ vim.keymap.set('n', '<leader>h', '<C-w>s', opts) -- split window horizontally
 vim.keymap.set('n', '<leader>se', '<C-w>=', opts) -- make split windows equal width & height
 vim.keymap.set('n', '<leader>xs', ':close<CR>', opts) -- close current split window
 
--- Navigate between splits
-vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', opts)
-vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', opts)
-vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', opts)
-vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', opts)
+vim.keymap.set('n', '<A-k>', ':wincmd k<CR>', opts)
+vim.keymap.set('n', '<A-j>', ':wincmd j<CR>', opts)
+vim.keymap.set('n', '<A-h>', ':wincmd h<CR>', opts)
+vim.keymap.set('n', '<A-l>', ':wincmd l<CR>', opts)
 
 vim.keymap.set('n', '<C-g>', ':terminal<CR>', opts) -- open terminal
 vim.keymap.set('t', '<leader>x', '<C-\\><C-n>:bdelete!<CR>', opts) -- close terminal buffer
