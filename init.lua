@@ -34,4 +34,6 @@ require("lazy").setup({
 	require("plugins.luasnip"),
 	require("plugins.dap"),
 	require("plugins.symbols-outline"),
+	require("plugins.copilot"),
+	require("plugins.copilot_chat"),
 })
