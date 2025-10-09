@@ -82,9 +82,32 @@ return {
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
+
+    local function find_git_root()
+      local current_dir = vim.fn.expand('%:p:h')
+      if current_dir == nil or current_dir == '' then
+        return nil
+      end
+      while current_dir ~= '/' do
+        if vim.fn.isdirectory(current_dir .. '/.git') == 1 then
+          return current_dir
+        end
+        current_dir = vim.fn.fnamemodify(current_dir, ':h')
+      end
+      return nil
+    end
+
     vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
     vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-    vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+    vim.keymap.set('n', '<leader>sf', function()
+      local project_root = find_git_root()
+      if project_root == nil then
+        project_root = vim.fn.getcwd()
+      end
+      builtin.find_files({
+        cwd = project_root,
+      })
+    end, { desc = '[S]earch [F]iles' })
     vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
     vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
     vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })

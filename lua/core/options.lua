@@ -41,3 +41,24 @@ vim.opt.shortmess:append 'c' -- Don't give |ins-completion-menu| messages (defau
 vim.opt.iskeyword:append '-' -- Hyphenated words recognized by searches (default: does not include '-')
 vim.opt.formatoptions:remove { 'c', 'r', 'o' } -- Don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode. (default: 'croql')
 vim.opt.runtimepath:remove '/usr/share/vim/vimfiles' -- Separate Vim plugins from Neovim in case Vim still in use (default: includes this path if Vim is installed)
+
+-- Auto-save modified buffers on inactivity
+vim.g.autosave_enabled = true
+local autosave_group = vim.api.nvim_create_augroup("AutoSaveGroup", { clear = true })
+vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI", "BufLeave" }, {
+  group = autosave_group,
+  pattern = "*",
+  callback = function()
+    if vim.g.autosave_enabled then
+      -- Check if the buffer is modified, has a name, and is not a special buffer
+      if
+        vim.bo.modified
+        and vim.fn.filereadable(vim.fn.expand('%')) == 1
+        and vim.bo.buftype == ""
+      then
+        vim.cmd("silent! w")
+      end
+    end
+  end,
+  desc = "Automatically save modified buffers."
+})

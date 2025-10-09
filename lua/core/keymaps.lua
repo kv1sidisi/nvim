@@ -1,5 +1,4 @@
--- Set leader key
-vim.g.mapleader = ' '
+-- Set leader key vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Disable the spacebar key's default behavior in Normal and Visual modes
@@ -13,6 +12,16 @@ vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', opts)
 
 -- save file without auto-formatting
 vim.keymap.set('n', '<leader>sn', '<cmd>noautocmd w <CR>', opts)
+
+-- toggle auto-save
+vim.keymap.set('n', '<leader>as', function()
+  vim.g.autosave_enabled = not vim.g.autosave_enabled
+  if vim.g.autosave_enabled then
+    print('Autosave enabled')
+  else
+    print('Autosave disabled')
+  end
+end, { desc = 'Toggle autosave' })
 
 -- quit file
 vim.keymap.set('n', '<C-q>', '<cmd> q <CR>', opts)
