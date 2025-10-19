@@ -1,6 +1,6 @@
 return {
   'windwp/nvim-autopairs',
-  enabled = false,
+  enabled = true,
   event = "InsertEnter",
   config = function()
     local autopairs = require('nvim-autopairs')
@@ -12,6 +12,10 @@ return {
         java = false,
       }
     })
+
+    autopairs.clear_rules()
+    local Rule = require('nvim-autopairs.rule')
+    autopairs.add_rule(Rule('{', '}'))
 
     -- Integration with nvim-cmp
     local cmp_autopairs = require('nvim-autopairs.completion.cmp')

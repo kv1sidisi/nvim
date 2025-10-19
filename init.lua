@@ -1,3 +1,6 @@
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 require("core.options")
 require("core.keymaps")
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -36,4 +39,5 @@ require("lazy").setup({
 	require("plugins.symbols-outline"),
 	require("plugins.copilot"),
 	require("plugins.copilot_chat"),
+	require("plugins.jupynium"),
 })
